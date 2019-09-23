@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 window.renderStatistics = function (ctx, names, times) {
   var CLOUSE_WIDTH = 420;
   var CLOUSE_HEIGHT = 270;
