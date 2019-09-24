@@ -27,13 +27,11 @@ window.renderStatistics = function (ctx, names, times) {
   ctx.fillText('Список результатов:', 120, 50);
   var XColumn = 140;
   var max = Math.round(times[0]);
-
   for (var i = 0; i < times.length; i++) {
     if (max < Math.round(times[i])) {
       max = Math.round(times[i]);
     }
   }
-
   for (var j = 0; j < times.length; j++) {
     if (names[j] === 'Вы') {
       ctx.fillStyle = 'rgba(255, 0, 0, 1)';
