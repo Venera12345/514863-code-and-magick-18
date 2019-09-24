@@ -14,12 +14,13 @@ var criatXColumn = function (xItem) {
 var criatHeightColumn = function (maxValue, timeColumnNumber) {
   return MAXHIEGHT_COLUMN * timeColumnNumber / maxValue;
 };
-
+var criatRect = function (ctx, color, x, y) {
+  ctx.fillStyle = color;
+  ctx.fillRect(x, y, CLOUSE_WIDTH, CLOUSE_HEIGHT);
+}
 window.renderStatistics = function (ctx, names, times) {
-  ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
-  ctx.fillRect(110, 20, CLOUSE_WIDTH, CLOUSE_HEIGHT);
-  ctx.fillStyle = 'white';
-  ctx.fillRect(100, 10, CLOUSE_WIDTH, CLOUSE_HEIGHT);
+  criatRect(ctx, 'rgba(0, 0, 0, 0.7)', 110, 20);
+  criatRect(ctx, 'white', 100, 10);
   ctx.font = '16px PT Mono';
   ctx.fillStyle = '#000000';
   ctx.fillText('Ура вы победили!', 120, 30);
