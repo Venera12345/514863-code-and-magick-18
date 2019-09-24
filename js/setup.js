@@ -10,7 +10,7 @@ var arrSurnames = ['да Марья', 'Верон', 'Мирабелла', 'Ва�
 var arrColorEyes = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
 var arrColorCoats = ['black', 'red', 'blue', 'yellow', 'green'];
 var creatName = function (i) {
-  return arrNames[i] +' '+ arrSurnames[i];
+  return arrNames[i] + ' ' + arrSurnames[i];
 };
 var fragment = document.createDocumentFragment();
 
@@ -45,7 +45,7 @@ var arrWizards = [
     eyesColor: arrColorEyes[3]
   }
 ];
-for(var i = 0; i < arrWizards.length; i++){
+for (var i = 0; i < arrWizards.length; i++) {
   var newWizard = creatWizards(arrWizards[i].eyesColor, arrWizards[i].coatColor, arrWizards[i].name);
   fragment.appendChild(newWizard);
 }

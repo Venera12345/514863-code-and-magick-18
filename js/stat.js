@@ -17,7 +17,7 @@ var criatHeightColumn = function (maxValue, timeColumnNumber) {
 var criatRect = function (ctx, color, x, y) {
   ctx.fillStyle = color;
   ctx.fillRect(x, y, CLOUSE_WIDTH, CLOUSE_HEIGHT);
-}
+};
 window.renderStatistics = function (ctx, names, times) {
   criatRect(ctx, 'rgba(0, 0, 0, 0.7)', 110, 20);
   criatRect(ctx, 'white', 100, 10);
