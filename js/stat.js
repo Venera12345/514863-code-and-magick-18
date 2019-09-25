@@ -22,7 +22,7 @@ var creatRect = function (ctx, color, x, y, width, height) {
   ctx.fillStyle = color;
   ctx.fillRect(x, y, width, height);
 };
-var creatText = function (ctx, color,name, x, y) {
+var creatText = function (ctx, color, name, x, y) {
   ctx.font = '16px PT Mono';
   ctx.fillStyle = color;
   ctx.fillText(name, x, y);
@@ -40,7 +40,7 @@ window.renderStatistics = function (ctx, names, times) {
       max = Math.round(times[i]);
     }
   }
- var colorStyle;
+  var colorStyle;
   for (var j = 0; j < times.length; j++) {
     if (names[j] === 'Вы') {
       colorStyle = 'rgba(255, 0, 0, 1)';
