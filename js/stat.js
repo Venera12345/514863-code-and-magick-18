@@ -5,43 +5,51 @@ var WIDTH_COLUMN = 40;
 var MAXHIEGHT_COLUMN = 150;
 var DISTANCE = 50;
 var TEXT_Y_NAME = 270;
-var criatYColumn = function (hieghtColumn) {
-  return CLOUSE_HEIGHT - hieghtColumn - 20;
+var CLOUSE_X = 100;
+var CLOUSE_Y = 10;
+var TEXT_X = 120;
+var TEXT_Y = 30;
+var creatYColumn = function (hieghtColumn) {
+  return CLOUSE_HEIGHT - hieghtColumn - CLOUSE_Y - CLOUSE_Y;
 };
-var criatXColumn = function (xItem) {
+var creatXColumn = function (xItem) {
   return xItem + WIDTH_COLUMN + DISTANCE;
 };
-var criatHeightColumn = function (maxValue, timeColumnNumber) {
+var creatHeightColumn = function (maxValue, timeColumnNumber) {
   return MAXHIEGHT_COLUMN * timeColumnNumber / maxValue;
 };
-var criatRect = function (ctx, color, x, y) {
+var creatRect = function (ctx, color, x, y, width, height) {
   ctx.fillStyle = color;
-  ctx.fillRect(x, y, CLOUSE_WIDTH, CLOUSE_HEIGHT);
+  ctx.fillRect(x, y, width, height);
+};
+var creatText = function (ctx, color,name, x, y) {
+  ctx.font = '16px PT Mono';
+  ctx.fillStyle = color;
+  ctx.fillText(name, x, y);
 };
 window.renderStatistics = function (ctx, names, times) {
-  criatRect(ctx, 'rgba(0, 0, 0, 0.7)', 110, 20);
-  criatRect(ctx, 'white', 100, 10);
-  ctx.font = '16px PT Mono';
-  ctx.fillStyle = '#000000';
-  ctx.fillText('Ура вы победили!', 120, 30);
-  ctx.fillText('Список результатов:', 120, 50);
-  var XColumn = 140;
+  creatRect(ctx, 'rgba(0, 0, 0, 0.7)', CLOUSE_X + CLOUSE_Y, CLOUSE_Y + CLOUSE_Y, CLOUSE_WIDTH, CLOUSE_HEIGHT);
+  creatRect(ctx, 'white', CLOUSE_X, CLOUSE_Y, CLOUSE_WIDTH, CLOUSE_HEIGHT);
+  creatText(ctx, '#000000', 'Ура вы победили!', TEXT_X, TEXT_Y);
+  creatText(ctx, '#000000', 'Список результатов:', TEXT_X, TEXT_Y + CLOUSE_Y + CLOUSE_Y);
+  var columnX = 140;
   var max = Math.round(times[0]);
+
   for (var i = 0; i < times.length; i++) {
     if (max < Math.round(times[i])) {
       max = Math.round(times[i]);
     }
   }
+ var colorStyle;
   for (var j = 0; j < times.length; j++) {
     if (names[j] === 'Вы') {
-      ctx.fillStyle = 'rgba(255, 0, 0, 1)';
+      colorStyle = 'rgba(255, 0, 0, 1)';
     } else {
-      ctx.fillStyle = 'rgba(0,0,153,' + Math.random() + ')';
+      colorStyle = 'rgba(0, 0, 153,' + Math.random() + ')';
     }
-    ctx.fillRect(XColumn, criatYColumn(criatHeightColumn(max, Math.round(times[j]))), WIDTH_COLUMN, criatHeightColumn(max, Math.round(times[j])));
-    ctx.fillStyle = 'black';
-    ctx.fillText(names[j], XColumn, TEXT_Y_NAME);
-    ctx.fillText(Math.round(times[j]), XColumn, criatYColumn(criatHeightColumn(max, Math.round(times[j]))) - 10);
-    XColumn = criatXColumn(XColumn);
+    creatRect(ctx, colorStyle, columnX, creatYColumn(creatHeightColumn(max, Math.round(times[j]))), WIDTH_COLUMN, creatHeightColumn(max, Math.round(times[j])));
+    creatText(ctx, 'black', names[j], columnX, TEXT_Y_NAME);
+    creatText(ctx, 'black', Math.round(times[j]), columnX, creatYColumn(creatHeightColumn(max, Math.round(times[j]))) - CLOUSE_Y);
+    columnX = creatXColumn(columnX);
   }
 };
