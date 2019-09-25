@@ -45,7 +45,7 @@ window.renderStatistics = function (ctx, names, times) {
     if (names[j] === 'Вы') {
       colorStyle = 'rgba(255, 0, 0, 1)';
     } else {
-      colorStyle = 'rgba(0, 0, 153,' + Math.random() + ')';
+      colorStyle = 'hsl(240, ' + Math.random()*100 + '% ,50%)';
     }
     creatRect(ctx, colorStyle, columnX, creatYColumn(creatHeightColumn(max, Math.round(times[j]))), WIDTH_COLUMN, creatHeightColumn(max, Math.round(times[j])));
     creatText(ctx, 'black', names[j], columnX, TEXT_Y_NAME);
